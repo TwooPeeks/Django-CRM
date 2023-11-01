@@ -1,12 +1,13 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Record
 
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label='', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'Email Address'}))
-    first_name = forms.CharField(label='', max_Length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'First Name'}))
-    last_name = forms.CharField(label='', max_Length=100,widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'Last Name'}))
+    first_name = forms.CharField(label='', max_length="100", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'First Name'}))
+    last_name = forms.CharField(label='', max_length="100", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'Last Name'}))
 
     class Meta:
         model = User
@@ -33,7 +34,7 @@ class SignUpForm(UserCreationForm):
 
 
 
-# Create Add Record Form
+# Add Record Form
 class AddRecordForm(forms.ModelForm):
 	first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"First Name", "class":"form-control"}), label="")
 	last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Last Name", "class":"form-control"}), label="")
@@ -47,3 +48,6 @@ class AddRecordForm(forms.ModelForm):
 	class Meta:
 		model = Record
 		exclude = ("user",)   
+            
+
+
